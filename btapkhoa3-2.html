@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Display Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-container {
+            background: #fff;
+            width: 650px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        .main-img {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .thumbnail-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 110px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .product-info {
+            margin-top: 20px;
+        }
+
+        select, button {
+            margin-top: 12px;
+            padding: 10px;
+            width: 200px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005ec5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product-container">
+
+    <div id="mainImage" class="main-img"
+         style="background-image: url('https://picsum.photos/id/1015/800/500');">
+    </div>
+
+    <div class="thumbnail-group">
+        <div class="thumbnail" onclick="changeImg1()"
+             style="background-image: url('https://picsum.photos/id/1015/800/500');"></div>
+
+        <div class="thumbnail" onclick="changeImg2()"
+             style="background-image: url('https://picsum.photos/id/1025/800/500');"></div>
+
+        <div class="thumbnail" onclick="changeImg3()"
+             style="background-image: url('https://picsum.photos/id/1041/800/500');"></div>
+    </div>
+
+    <div class="product-info">
+        <h2 id="productName">Outdoor Running Shoes</h2>
+        <p id="productDesc">High-quality shoes designed for comfort and performance.</p>
+        <h3 id="productPrice">$79.99</h3>
+
+        <select id="sizeOption">
+            <option value="">Choose size</option>
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+        </select>
+
+        <button onclick="addToCart()">Add to Cart</button>
+
+        <p id="cartMsg" style="margin-top:10px; font-weight:bold; color:green;"></p>
+    </div>
+</div>
+
+<script>
+
+    function changeImg1() {
+        document.querySelector("#mainImage").style.backgroundImage =
+            "url('https://picsum.photos/id/1015/800/500')";
+    }
+
+    function changeImg2() {
+        document.getElementById("mainImage").style.backgroundImage =
+            "url('https://picsum.photos/id/1025/800/500')";
+    }
+
+    function changeImg3() {
+        document.querySelector("#mainImage").style.backgroundImage =
+            "url('https://picsum.photos/id/1041/800/500')";
+    }
+
+    function addToCart() {
+        const size = document.getElementById("sizeOption").value;
+        const msg = document.getElementById("cartMsg");
+
+        if (size === "") {
+            msg.style.color = "red";
+            msg.textContent = "Please select a size.";
+        } else {
+            msg.style.color = "green";
+            msg.textContent = "Added to cart! Size: " + size;
+        }
+    }
+
+</script>
+
+</body>
+</html>
