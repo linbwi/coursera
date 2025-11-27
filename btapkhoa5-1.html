@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f8f8f8;
+  color: #333;
+}
+
+/* HEADER / HERO */
+.hero {
+  background: linear-gradient(135deg, #4c6ef5, #7950f2);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-content {
+  margin-top: 40px;
+}
+
+.cta {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: white;
+  color: #4c6ef5;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FEATURES */
+.features {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* DESKTOP VERSION */
+@media (min-width: 768px) {
+  .hero {
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="navbar">
+      <h1 class="logo">MyWebsite</h1>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <h2>Welcome to My Landing Page</h2>
+      <p>This is the desktop & mobile layout required for the assignment.</p>
+      <button class="cta">Get Started</button>
+    </div>
+  </header>
+
+  <section class="features">
+    <h2>Main Features</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Feature One</h3>
+        <p>Description of the first feature.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Feature Two</h3>
+        <p>Description of the second feature.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Feature Three</h3>
+        <p>Description of the third feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MyWebsite — All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
