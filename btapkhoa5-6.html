@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background: #121212;
+            color: #ddd;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        #menu-btn,
+        #dark-toggle {
+            display: none;
+            font-size: 22px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .section {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .card {
+            background: #1a1a1a;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+        }
+
+        form button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #444;
+                padding: 10px;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            #menu-btn,
+            #dark-toggle {
+                display: block;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Portfolio</h1>
+
+        <nav id="nav">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button id="menu-btn" aria-label="Menu">☰</button>
+        <button id="dark-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    </header>
+
+    <section id="about" class="section reveal">
+        <h2>About Me</h2>
+        <p>
+            This site was created as part of my course project. It is W3 validated, responsive, and includes four
+            extras:
+            dark mode, smooth scroll, reveal animations, and a mobile menu.
+        </p>
+    </section>
+
+    <section id="projects" class="section reveal">
+        <h2>Projects</h2>
+
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Project 1</h3>
+                <p>A short description of the project.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Project 2</h3>
+                <p>A short description of the project.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Project 3</h3>
+                <p>A short description of the project.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+        <h2>Contact</h2>
+
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 My Portfolio</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
