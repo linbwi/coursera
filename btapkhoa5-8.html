@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Portfolio — Gradient Modern</title>
+    <meta name="description"
+        content="Developer portfolio demo (one-file). Gradient modern style, responsive, dark mode, reveal animations, smooth scroll.">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, #0f172a 0%, #071227 100%);
+            color: #e6eef8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            transition: background .25s ease, color .25s ease;
+        }
+
+        .wrap {
+            width: 92%;
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        header.site-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(6px);
+            background: rgba(6, 10, 25, 0.45);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 0
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.4px
+        }
+
+        nav.site-nav {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        nav.site-nav a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px;
+            border-radius: 6px
+        }
+
+        nav.site-nav a:focus {
+            outline: 2px dashed rgba(255, 255, 255, .12);
+            outline-offset: 3px
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .06);
+            color: inherit;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px
+        }
+
+        .hero {
+            padding: 56px 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            margin: 0 0 12px
+        }
+
+        .hero-left p {
+            color: rgba(230, 238, 248, .85);
+            margin: 0 0 18px
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #7c3aed, #06b6d4);
+            border: 0;
+            padding: 12px 18px;
+            border-radius: 10px;
+            color: #031025;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(6, 11, 37, 0.45);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: inherit;
+            cursor: pointer
+        }
+
+        .hero-right {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 240px;
+            border-radius: 10px;
+            background:
+                linear-gradient(135deg, #0ea5a4, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #021021;
+            font-size: 22px;
+        }
+
+        section.block {
+            padding: 44px 0
+        }
+
+        h2.section-title {
+            margin: 0 0 18px;
+            font-size: 20px
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        .muted {
+            color: rgba(230, 238, 248, 0.75);
+            font-size: 14px
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .skill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        form {
+            max-width: 700px
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: transparent;
+            color: inherit;
+            margin-bottom: 12px
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical
+        }
+
+        .small {
+            font-size: 13px;
+            color: rgba(230, 238, 248, 0.7)
+        }
+
+        #backTop {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 60;
+            display: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7c3aed, #06b6d4);
+            border: none;
+            color: #021021;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(6, 11, 37, 0.45)
+        }
+
+        @media(max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .hero-right {
+                order: -1
+            }
+        }
+
+        @media(max-width:720px) {
+            nav.site-nav {
+                display: none
+            }
+
+            .header-inner {
+                gap: 8px
+            }
+        }
+
+        @media(max-width:520px) {
+            .card-row {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                padding: 14px
+            }
+
+            .hero {
+                padding: 36px 0
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .6s cubic-bezier(.2, .9, .3, 1)
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: none
+        }
+
+        body.light {
+            background: linear-gradient(180deg, #f6f9ff 0%, #eef2ff 100%);
+            color: #081025;
+        }
+
+        body.light .site-header {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(2, 6, 23, 0.04)
+        }
+
+        body.light .hero-right {
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.02), rgba(2, 6, 23, 0.01));
+            border: 1px solid rgba(2, 6, 23, 0.04);
+        }
+
+        body.light .card {
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.02), rgba(2, 6, 23, 0.01));
+            border-color: rgba(2, 6, 23, 0.03)
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header" role="banner">
+        <div class="wrap header-inner" role="navigation" aria-label="Main">
+            <div class="brand">YourName • Developer</div>
+
+            <nav class="site-nav" id="mainNav" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="controls" role="group" aria-label="Controls">
+                <button id="menuBtn" class="icon-btn" aria-expanded="false" aria-controls="mainNav"
+                    title="Toggle menu">≡</button>
+                <button id="modeBtn" class="icon-btn" title="Toggle color mode">🌓</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero wrap" aria-labelledby="heroTitle">
+            <div class="hero-left reveal">
+                <h1 id="heroTitle">Hi, I'm YourName — frontend developer</h1>
+                <p class="muted">I build responsive, accessible, and modern web experiences. This single-file portfolio
+                    demonstrates layout, styling, and small JavaScript features suitable for course submission.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-primary" role="button">See Projects</a>
+                    <a href="#contact" class="btn-ghost" role="button">Contact Me</a>
+                </div>
+            </div>
+            <aside class="hero-right reveal" aria-hidden="false">
+                <div class="avatar">YOUR<br>AVATAR</div>
+                <p class="muted small" style="margin-top:12px">Location • Role • Email@example.com</p>
+            </aside>
+        </section>
+
+        <section id="about" class="block wrap reveal" aria-labelledby="aboutTitle">
+            <h2 id="aboutTitle" class="section-title">About</h2>
+            <p class="muted">This template is adapted into a one-file portfolio for the assignment option that requires
+                modifying a template. I adjusted visual style, added interactivity (dark mode, back-to-top, reveal
+                animations), and ensured responsive behavior. Replace text with your real content.</p>
+        </section>
+
+        <section id="skills" class="block wrap reveal" aria-labelledby="skillsTitle">
+            <h2 id="skillsTitle" class="section-title">Skills</h2>
+            <div class="skills" aria-hidden="false">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Responsive Design</span>
+                <span class="skill">Accessibility</span>
+            </div>
+        </section>
+
+        <section id="projects" class="block wrap reveal" aria-labelledby="projectsTitle">
+            <h2 id="projectsTitle" class="section-title">Projects</h2>
+            <div class="card-row">
+                <article class="card reveal" aria-labelledby="p1">
+                    <h3 id="p1">Project Alpha</h3>
+                    <p class="muted">Short description — tech stack: HTML/CSS/JS. Link: (replace with live link)</p>
+                </article>
+                <article class="card reveal" aria-labelledby="p2">
+                    <h3 id="p2">Project Beta</h3>
+                    <p class="muted">Short description — small app demo.</p>
+                </article>
+                <article class="card reveal" aria-labelledby="p3">
+                    <h3 id="p3">Project Gamma</h3>
+                    <p class="muted">Short description — responsive layout.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="block wrap reveal" aria-labelledby="contactTitle">
+            <h2 id="contactTitle" class="section-title">Contact</h2>
+            <form id="contactForm" aria-describedby="contactHelp" novalidate>
+                <div id="contactHelp" class="small muted">Send a quick message — this demo form prevents actual
+                    submission.</div>
+                <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
+                <input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+                <textarea name="message" placeholder="Message" aria-label="Message" required></textarea>
+                <button class="btn-primary" type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer wrap" role="contentinfo" style="padding:26px 0;text-align:center;">
+        <p class="muted">© 2025 YourName — single-file portfolio (modified template)</p>
+    </footer>
+
+    <button id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        menuBtn.addEventListener('click', () => {
+            const shown = mainNav.classList.toggle('show');
+            menuBtn.setAttribute('aria-expanded', shown ? 'true' : 'false');
+        });
+
+        const modeBtn = document.getElementById('modeBtn');
+        const LS_KEY = 'portfolio-mode';
+        function applyMode(mode) {
+            if (mode === 'light') document.body.classList.add('light');
+            else document.body.classList.remove('light');
+        }
+
+        const saved = localStorage.getItem(LS_KEY);
+        applyMode(saved || 'dark');
+        modeBtn.addEventListener('click', () => {
+            const isLight = document.body.classList.toggle('light');
+            localStorage.setItem(LS_KEY, isLight ? 'light' : 'dark');
+        });
+
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 60) el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+
+        const backTop = document.getElementById('backTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) backTop.style.display = 'block';
+            else backTop.style.display = 'none';
+        });
+        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Demo: message sent. Replace with real backend or email link for production.');
+            form.reset();
+        });
+
+        menuBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); menuBtn.click(); } });
+        modeBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); modeBtn.click(); } });
+    </script>
+</body>
+
+</html>
